@@ -20,11 +20,11 @@ bl_info = {
     "name": "XFBX",
     "description": "Custom FBX Exporter",
     "author": "Tri Sulistiono",
-    "version": (1, 0, 0),
+    "version": (1, 0, 1),
     "blender": (2, 80, 0),
     "location": "View3D > Tools > XFBX",
     #"warning": "For internal use only!",
-    "wiki_url": "https://github.com/stricmp/xfbx/wiki",
+    "doc_url": "https://github.com/stricmp/xfbx/wiki",
     "tracker_url": "https://github.com/stricmp/xfbx/issues",
     "support": "COMMUNITY",
     "category": "Custom Tools"
@@ -542,7 +542,7 @@ class InitOperator(Operator):
 
 
 # The main UI
-class MainPanel(Panel):
+class XFBX_PT_MainPanel(Panel):
     """XFBX UI in the 3D Viewport"""
 
     bl_label = "XFBX Tool"
@@ -558,7 +558,7 @@ class MainPanel(Panel):
             layout = self.layout
             row = layout.row()
             col = row.column(align = True)
-            col.operator("xfbx.init", icon = 'VISIBLE_IPO_ON')
+            col.operator("xfbx.init", icon = 'PACKAGE')
 
         if bInitialized:
 
@@ -606,13 +606,13 @@ bpy.app.handlers.load_post.append(ReloadConfig)
 
 
 def register():
-    register_class(MainPanel)
+    register_class(XFBX_PT_MainPanel)
     register_class(InitOperator)
     register_class(ExportOperator)
 
 
 def unregister():
-    unregister_class(MainPanel)
+    unregister_class(XFBX_PT_MainPanel)
     unregister_class(InitOperator)
     unregister_class(ExportOperator)
 
